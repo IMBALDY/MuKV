@@ -2,26 +2,26 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Python](https://img.shields.io/badge/Python-3.11+-green.svg)](https://www.python.org/downloads/)
-[![Paper](https://img.shields.io/badge/Paper-Coming%20Soon-orange)]()
+[![arXiv](https://img.shields.io/badge/arXiv-2605.22269-orange)](https://arxiv.org/abs/2605.22269)
 
-Official PyTorch implementation of **"MuKV: Multi-Grained KV Cache Compression for Long Streaming Video Question-Answering"** (CVPR 2026).
+Official PyTorch implementation of **"MuKV: Multi-Grained KV Cache Compression for Long Streaming Video Question-Answering"** [CVPR'26].
 
 ---
 
 ## 💡 Overview
+Efficiently and accurately responsing to user questions over long, live video streams (either third-person view or first-person view) remains challenging, especially when the questions involve fine-grained details in the far past. Existing sparse sampling and sliding window approaches often trade-off visual details for efficiency. Video KV-cache memory provides a good alternative, but per-frame caching not only neglects information granularity but also brings heavy redanducy. We thus propose MuKV, a multi-grained KV-cache compression approach designed to improve streaming VideoQA. We highlight the followings:
 
-Long unconstrained streaming videos contain complex events and micro-actions. A single rigid temporal granularity is insufficient to decode arbitrary user questions in real-time. **MuKV** is a multi-grained KV-Cache compression pipeline designed to significantly augment Real-Time Visual Question Answering.
+- **Multi-Grained Context:** Represent past videos in hierarchically compressed KV tokens at segment, frame, and patch levels.
+- **Redundancy Minimization:** Adaptively trim irrelevant tokens utilizing token attention importance and frequency signal. 
+- **Efficiency and Accuracy:** Significantly improved QA accuracy, without sacrificing offline memory and online QA efficiency. The strength gets boosted as video length increases.
+
 
 <p align="center">
-  <img src="assets/mukv-1.png" alt="MuKV Framework" width="95%">
+  <img src="assets/intro.png" alt=" A comparison with ReKV" width="60%" height="40%">
   <br>
-  <em>Figure 1: The framework of the MuKV method. We extract visual tokens and distribute their semantics across three temporal granularities (Patch, Frame, Segment), dynamically storing and fetching context to precisely answer questions spanning diverse temporal horizons.</em>
+  <em>Figure 1: A comparison with ReKV under different online inference token count and video lengths.</em>
 </p>
 
-### Key Features
-- **Multi-Grained Context:** Represent lengthy videos in hierarchically compressed resolutions (Patch: 49 tokens, Frame: 196 tokens, Segment: 784 tokens).
-- **Redundancy Minimization:** Dynamically trims visually irrelevant tokens utilizing token attention importance. 
-- **Time/Memory Efficient:** Low memory footprint with streaming compatibility. Supports open-ended generation streams.
 
 ---
 
