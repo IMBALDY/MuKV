@@ -108,6 +108,15 @@ If you want to run exactly configured end-to-end evaluations without manually co
 bash scripts/sh/run_mukv_rvs_ego.sh
 ```
 
+### Cite
+```
+@article{xiao2026mukv,
+  title={MuKV: Multi-Grained KV Cache Compression for Long Streaming Video Question-Answering},
+  author={Xiao, Junbin and Chen, Jiajun and Sun, Tianxiang and Yang, Xun and Yao, Angela},
+  booktitle={IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year={2026}
+}
+```
 ---
 
 ## 🙏 Acknowledgements
